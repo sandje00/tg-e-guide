@@ -26,4 +26,6 @@ app.get('/status', (req, res) => {
     });
 });
 
+/* app.use('/items', require('./routes/items')); */
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
