@@ -23,11 +23,7 @@ app.use(morgan('combine'));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/signup', (req, res) => {
-    res.send({
-        message: `Hello, ${req.body.username}, you have signed up!`
-    });
-});
+require('./routes')(app);
 
 sequelize.sync()
   .then(() => {
