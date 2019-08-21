@@ -1,7 +1,13 @@
+const {User} = require('../models');
+
 module.exports = {
-    signup(req, res) {
-        res.send({
-            message: `Hello, ${req.body.username}, you have signed up!`
-        });
+    async signup(req, res) {
+        try {
+            const user = await User.create(req.body);
+            res.send(user.toJSON());
+        }
+        catch(err) {
+            res.send(err);
+        }
     }
 };
