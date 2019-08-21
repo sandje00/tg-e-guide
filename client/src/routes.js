@@ -1,15 +1,13 @@
-import HelloWorld from '@/components/HelloWorld';
+import Home from '@/components/Home';
 import Register from '@/components/Register';
 
 const routes = [
     {
         path: '/',
-        name: 'HelloWorld',
-        component: HelloWorld
+        component: Home
     },
     {
         path: '/register',
-        name: 'register',
         component: Register
     }
 ];
