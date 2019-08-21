@@ -1,4 +1,31 @@
-const Sequelize = require('sequelize');
+module.exports = (sequelize, DataTypes) => 
+    sequelize.define('Item', {
+        idItem: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: DataTypes.STRING
+        },
+        picture: {
+            type: DataTypes.STRING
+        },
+        description_text: {
+            type: DataTypes.TEXT
+        },
+        view_more_link: {
+            type: DataTypes.STRING
+        },
+        avg_grade: {
+            type: DataTypes.DECIMAL(3, 2)
+        },
+        category: {
+            type: DataTypes.STRING
+        }
+    })
+
+/* const Sequelize = require('sequelize');
 const db = require('../config/database');
 
 const Item = db.define('item', {
@@ -27,4 +54,4 @@ const Item = db.define('item', {
     }
 });
 
-module.exports = Item;
+module.exports = Item; */
