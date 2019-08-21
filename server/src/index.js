@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 
-const db = require('./config/database');
+/* const db = require('./config/database');
 db
   .authenticate()
   .then(() => {
@@ -11,7 +11,7 @@ db
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
-  });
+  }); */
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -20,12 +20,10 @@ app.use(morgan('combine'));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/status', (req, res) => {
+app.post('/signup', (req, res) => {
     res.send({
-        message: 'Hello world!'
+        message: `Hello, ${req.body.username}, you have signed up!`
     });
 });
-
-/* app.use('/items', require('./routes/items')); */
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,7 +1,7 @@
 import Api from '../services/Api';
 
 export default {
-    register(user_data) {
-        return Api().post('register', user_data);
+    signup(user_data) {
+        return Api().post('signup', user_data);
     }
 }
