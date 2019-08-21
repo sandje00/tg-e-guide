@@ -3,6 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 
+const config = require('./config');
+const {sequelize} = require('./models');
+
 /* const db = require('./config/database');
 db
   .authenticate()
@@ -26,4 +29,7 @@ app.post('/signup', (req, res) => {
     });
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+sequelize.sync()
+  .then(() => {
+    app.listen(config.PORT, () => console.log(`Server running on port ${config.PORT}`));
+  });
