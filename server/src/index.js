@@ -6,16 +6,6 @@ const morgan = require('morgan');
 const config = require('./config');
 const {sequelize} = require('./models');
 
-/* const db = require('./config/database');
-db
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  }); */
-
 const app = express();
 
 app.use(morgan('combine'));

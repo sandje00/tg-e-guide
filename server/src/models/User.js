@@ -6,9 +6,11 @@ module.exports = (sequelize, DataTypes) =>
             autoIncrement: true
         },
         username: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         },
         hpwd: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            allowNull: false
         }
     })
