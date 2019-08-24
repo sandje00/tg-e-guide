@@ -5,6 +5,7 @@
     <br>
     <input type="password" name="password" v-model="password" placeholder="password">
     <br>
+    <div class="error" v-html="error" />
     <button @click="signup">Sign Up</button>
   </div>
 </template>
@@ -16,21 +17,28 @@ export default {
   data() {
     return {
       username: '',
-      password: ''
+      password: '',
+      error: null
     }
   },
   methods: {
     async signup() {
-      const response = await authService.signup({
+      try {
+        const response = await authService.signup({
         username: this.username,
-        password: this.password
-      });
-      console.log(response.data);
+        hpwd: this.password
+        });
+      }
+      catch(error) {
+        this.error = error.response.data.error;
+      }
     }
   }
 }
 </script>
 
 <style scoped>
-
+  .error {
+    color: red;
+  }
 </style>
