@@ -24,7 +24,7 @@ export default {
   methods: {
     async signin() {
       try {
-        const response = await authService.signin({
+        /* const response = */await authService.signin({
         username: this.username,
         hpwd: this.password
         });
