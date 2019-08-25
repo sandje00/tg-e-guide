@@ -2,8 +2,14 @@
   <div id="app">
     <nav class="navbar">
         <router-link to='/' class="nav-item">Home</router-link>
-        <router-link to='/signin' class="nav-item">Sign In</router-link>
-        <router-link to='/signup' class="nav-item">Sign Up</router-link>
+        <router-link to='/signin'
+          class="nav-item"
+          v-if="!$store.state.isUserSignedIn"
+          >Sign In</router-link>
+        <router-link to='/signup'
+          class="nav-item"
+          v-if="!$store.state.isUserSignedIn"
+          >Sign Up</router-link>
     </nav>
     <router-view />
   </div>

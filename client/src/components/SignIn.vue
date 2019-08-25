@@ -24,10 +24,12 @@ export default {
   methods: {
     async signin() {
       try {
-        /* const response = */await authService.signin({
+        const response = await authService.signin({
         username: this.username,
         hpwd: this.password
         });
+        this.$store.dispatch('setToken', response.data.token);
+        this.$store.dispatch('setUser', response.data.user);
       }
       catch(error) {
         this.error = error.response.data.error;
