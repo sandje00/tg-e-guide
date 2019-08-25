@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <nav>
-        <router-link to='/'>Home</router-link>
-        <router-link to='/signin'>SignIn</router-link>
-        <router-link to='/signup'>SignUp</router-link>
+    <nav class="navbar">
+        <router-link to='/' class="nav-item">Home</router-link>
+        <router-link to='/signin' class="nav-item">Sign In</router-link>
+        <router-link to='/signup' class="nav-item">Sign Up</router-link>
     </nav>
     <router-view />
   </div>
@@ -28,5 +28,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item {
+  padding: 50px;
+  color: #2c3e50;
 }
 </style>

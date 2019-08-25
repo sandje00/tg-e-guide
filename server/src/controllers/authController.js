@@ -17,7 +17,8 @@ module.exports = {
             const user_json = user.toJSON();
             res.send({
                 user: user_json,
-                token: jwtSignUser(user_json)
+                token: jwtSignUser(user_json),
+                success: 'You have signed up successfully!'
             });
         }
         catch(err) {
@@ -49,7 +50,8 @@ module.exports = {
             const user_json = user.toJSON();
             res.send({
                 user: user_json,
-                token: jwtSignUser(user_json)
+                token: jwtSignUser(user_json),
+                success: 'You have signed in successfully!'
             });
         }
         catch(err) {
