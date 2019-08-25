@@ -24,7 +24,7 @@ export default {
   methods: {
     async signup() {
       try {
-        /* const response =  */await authService.signup({
+        /* response =  */await authService.signup({
         username: this.username,
         hpwd: this.password
         });
@@ -38,6 +38,10 @@ export default {
 </script>
 
 <style scoped>
+  .success {
+    color: green;
+  }
+
   .error {
     color: red;
   }

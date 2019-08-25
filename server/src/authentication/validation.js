@@ -15,7 +15,7 @@ module.exports = {
             switch(error.details[0].context.key) {
                 case 'username':
                     res.status(400).send({
-                        error: `You must provide valid username:
+                        error: `<b>You must provide valid username</b>
                         <br>
                         It must contain following characters: lower case, upper case, digits 0 - 9
                         `
@@ -23,11 +23,11 @@ module.exports = {
                     break;
                 case 'hpwd':
                     res.status(400).send({
-                        error: `You must provide valid password:
+                        error: `<b>You must provide valid password</b>
                         <br>
                         1. It must contain following characters: lower case, upper case, digits 0 - 9
                         <br>
-                        1. It must be 8 - 32 characters in length
+                        2. It must be 8 - 32 characters in length
                         `
                     });
                     break;

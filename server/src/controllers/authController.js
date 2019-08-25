@@ -22,7 +22,9 @@ module.exports = {
             });
         }
         catch(err) {
-            res.send(err);
+            res.status(400).send({
+                error: `<b>This username is already in use.</b>`
+            });
         }
     },
     async signin(req, res) {
@@ -36,14 +38,14 @@ module.exports = {
 
             if(!user) {
                 return res.status(403).send({
-                    error: `There is no such user as ${username}.`
+                    error: `<b>There is no such user as ${username}.</b>`
                 });
             }
 
             const is_pwd_valid = await user.pwdcmp(hpwd);
             if(!is_pwd_valid) {
                 return res.status(403).send({
-                    error: 'Your password is incorrect.'
+                    error: `<b>Your password is incorrect.</b>`
                 });
             }
 
@@ -56,7 +58,7 @@ module.exports = {
         }
         catch(err) {
             res.status(500).send({
-                error: 'An error has occured trying to sign in.'
+                error: `<b>An error has occured trying to sign in.</b>`
             });
         }
     }
