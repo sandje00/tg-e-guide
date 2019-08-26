@@ -13,19 +13,25 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        categories: [
-          'Historical sites',
-          'Museums',
-          'Restaurants',
-          'Accomodation',
-          'Nearby places'
-        ]
-      }
+import itemsService from '../services/itemsService';
+
+export default {
+  data() {
+    return {
+      categories: [
+        'Historical sites',
+        'Museums',
+        'Restaurants',
+        'Accomodation',
+        'Nearby places'
+      ],
+      items: null
     }
+  },
+  async mounted() {
+    this.items = await itemsService.getAllItems();
   }
+}
 </script>
 
 <style scoped>
