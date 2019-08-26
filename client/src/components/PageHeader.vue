@@ -14,6 +14,20 @@
         Home
       </v-btn>
       <v-btn 
+        text
+        :to="{
+          name: 'gettingaround'
+        }">
+        Getting around
+      </v-btn>
+      <v-btn 
+        text
+        :to="{
+          name: 'transportation'
+        }">
+        Transportation
+      </v-btn>
+      <v-btn 
         v-if="!$store.state.isUserSignedIn"
         text
         :to="{
@@ -31,8 +45,7 @@
       </v-btn>
       <v-btn 
         v-if="$store.state.isUserSignedIn"
-        text 
-        dark
+        text
         @click="signout">
         Sign Out
       </v-btn>
