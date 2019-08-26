@@ -1,28 +1,25 @@
 <template>
   <div id="app">
-    <nav class="navbar">
-        <router-link to='/' class="nav-item">Home</router-link>
-        <router-link to='/signin'
-          class="nav-item"
-          v-if="!$store.state.isUserSignedIn"
-          >Sign In</router-link>
-        <router-link to='/signup'
-          class="nav-item"
-          v-if="!$store.state.isUserSignedIn"
-          >Sign Up</router-link>
-    </nav>
-    <router-view />
+    <v-app>
+      <PageHeader />
+      
+      <main>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </main>
+    </v-app>
   </div>
 </template>
 
 <script>
-/* import Home from './components/Home.vue' */
+import PageHeader from './components/PageHeader.vue'
 
 export default {
-  /* name: 'app',
+  name: 'app',
   components: {
-    Home,
-  } */
+    PageHeader
+  }
 }
 </script>
 
@@ -36,13 +33,4 @@ export default {
   margin-top: 60px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-item {
-  padding: 50px;
-  color: #2c3e50;
-}
 </style>

@@ -1,12 +1,36 @@
 <template>
   <div>
     <h1>Sign Up</h1>
-    <input type="text" name="username" v-model="username" placeholder="username">
-    <br>
-    <input type="password" name="password" v-model="password" placeholder="password">
-    <br>
-    <div class="error" v-html="error" />
-    <button @click="signup">Sign Up</button>
+      <v-container class="grey lighten-5">
+        <v-row no-gutters>
+          <v-col>
+            
+          </v-col>
+          <v-col>
+            <v-form class="form-input">
+                <v-text-field
+                  label="username"
+                  v-model="username"
+                ></v-text-field>
+
+                <v-text-field
+                  label="password"
+                  :type="'password'"
+                  v-model="password"
+                ></v-text-field>
+
+                <div class="error" v-html="error" />
+
+                <v-btn @click="signup">
+                  Sign Up
+                </v-btn>
+            </v-form>
+          </v-col>
+          <v-col>
+            
+          </v-col>
+        </v-row>
+      </v-container>
   </div>
 </template>
 
@@ -24,7 +48,7 @@ export default {
   methods: {
     async signup() {
       try {
-        /* response =  */await authService.signup({
+        const response = await authService.signup({
         username: this.username,
         hpwd: this.password
         });
@@ -40,10 +64,9 @@ export default {
 </script>
 
 <style scoped>
-  .success {
-    color: green;
+  .form-input {
+    width: 400px;  
   }
-
   .error {
     color: red;
   }
