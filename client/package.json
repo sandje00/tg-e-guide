@@ -17,6 +17,7 @@
     "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",

@@ -5,7 +5,7 @@ module.exports = {
     async fetchItems(req, res) {
         try {
             const items = await Item.findAll({
-                attributes: ['idItem', 'name', 'picture', 'avg_grade', 'category']
+                attributes: ['idItem', 'name', 'picture', 'description_text', 'avg_grade', 'category']
             });
             res.send(items);
         }

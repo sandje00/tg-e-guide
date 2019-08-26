@@ -1,7 +1,10 @@
 import Api from '../services/Api';
 
 export default {
-    getAllItems() {
+    fetchItems() {
         return Api().get('items');
+    },
+    fetchTimetableItems() {
+        return Api().get('timetableitems');
     }
 }
