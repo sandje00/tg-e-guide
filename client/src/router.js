@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '@/components/Home';
 import GettingAround from '@/components/GettingAround';
+import ViewItem from '@/components/ViewItem';
 import Transportation from '@/components/Transportation';
 import SignUp from '@/components/SignUp';
 import SignIn from '@/components/SignIn';
@@ -20,6 +21,11 @@ export default new VueRouter({
             path: '/gettingaround',
             name: 'gettingaround',
             component: GettingAround
+        },
+        {
+            path: '/gettingaround/:idItem',
+            name: 'viewitem',
+            component: ViewItem
         },
         {
             path: '/transportation',

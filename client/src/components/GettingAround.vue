@@ -26,7 +26,16 @@
           <v-card-actions>
             <v-icon color="#ffb300" class="icon star">fas fa-star</v-icon>
             <span class="avg">{{item.avg_grade}}</span>
-            <v-icon color="#0c0e87" class="icon"> fas fa-info-circle</v-icon>
+            <v-icon
+              color="#0c0e87"
+              class="icon"
+              @click="navigateTo({
+                name: 'viewitem',
+                params: {
+                  idItem: item.idItem
+                }
+              })">
+              fas fa-info-circle</v-icon>
             <v-icon color="#3dbf4c" class="icon add"
             v-if="$store.state.isUserSignedIn"
             >fas fa-plus</v-icon>
@@ -55,6 +64,11 @@ export default {
   },
   async mounted() {
     this.items = (await itemsService.fetchItems()).data;
+  },
+  methods: {
+    navigateTo(route) {
+      this.$router.push(route);
+    }
   }
 }
 </script>
