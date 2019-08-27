@@ -5,7 +5,7 @@ export default {
         return Api().get('items');
     },
     fetchOneItem(idItem) {
-        return Api().get(`gettingaround/${idItem}`);
+        return Api().get(`viewitem/${idItem}`);
     },
     fetchTimetableItems() {
         return Api().get('timetableitems');
