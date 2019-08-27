@@ -15,6 +15,19 @@ module.exports = {
             });
         }
     },
+    async fetchOneItem(req, res) {
+        try {
+            const item = await Item.findOne({
+                where: {idItem: req.params.idItem}
+            });
+            res.send(item);
+        }
+        catch(err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch the item.'
+            });
+        }
+    },
     async fetchTimetableItems(req, res) {
         try {
             const items = await TimetableItem.findAll();

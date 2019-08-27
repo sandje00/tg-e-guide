@@ -6,5 +6,6 @@ module.exports = (app) => {
     app.post('/signup', validation.signup, authController.signup);
     app.post('/signin', authController.signin);
     app.get('/items', itemsController.fetchItems);
+    app.get('/viewitem/:idItem', itemsController.fetchOneItem);
     app.get('/timetableitems', itemsController.fetchTimetableItems);
 };

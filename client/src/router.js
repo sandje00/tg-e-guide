@@ -23,7 +23,7 @@ export default new VueRouter({
             component: GettingAround
         },
         {
-            path: '/gettingaround/:idItem',
+            path: '/viewitem/:idItem',
             name: 'viewitem',
             component: ViewItem
         },
