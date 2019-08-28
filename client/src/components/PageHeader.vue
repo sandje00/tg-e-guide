@@ -28,7 +28,7 @@
         Transportation
       </v-btn>
       <v-btn 
-        v-if="!$store.state.isUserSignedIn"
+        v-if="!isUserSignedIn"
         text
         :to="{
           name: 'signin'
@@ -36,7 +36,7 @@
         Sign In
       </v-btn>
       <v-btn 
-        v-if="!$store.state.isUserSignedIn"
+        v-if="!isUserSignedIn"
         text
         :to="{
           name: 'signup'
@@ -44,7 +44,7 @@
         Sign Up
       </v-btn>
       <v-btn 
-        v-if="$store.state.isUserSignedIn"
+        v-if="isUserSignedIn"
         text
         @click="signout">
         Sign Out
@@ -55,7 +55,14 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
   export default {
+    computed: {
+      ...mapState([
+        'isUserSignedIn'
+      ])
+    },
     methods: {
       signout () {
         this.$store.dispatch('setToken', null);

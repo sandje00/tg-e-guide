@@ -18,7 +18,7 @@
           </v-layout>
           <template v-slot:actions>
             <v-icon color="#3dbf4c" class="icon add"
-
+              v-if="isUserSignedIn"
             >fas fa-plus</v-icon>
           </template>
         </v-banner>
@@ -29,8 +29,14 @@
 
 <script>
 import itemsService from '../services/itemsService'
+import {mapState} from 'vuex';
 
   export default {
+    computed: {
+      ...mapState([
+        'isUserSignedIn'
+      ])
+    },
     data() {
       return {
         categories: {

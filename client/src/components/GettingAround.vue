@@ -37,7 +37,8 @@
               })">
               fas fa-info-circle</v-icon>
             <v-icon color="#3dbf4c" class="icon add"
-            v-if="$store.state.isUserSignedIn"
+            v-if="isUserSignedIn"
+            @click="addtogo(item.idItem)"
             >fas fa-plus</v-icon>
           </v-card-actions>
         </v-card>
@@ -47,9 +48,17 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
 import itemsService from '../services/itemsService';
+import togoService from '../services/togoService';
 
 export default {
+  computed: {
+    ...mapState([
+      'isUserSignedIn'
+    ])
+  },
   data() {
     return {
       categories: {
@@ -68,6 +77,12 @@ export default {
   methods: {
     navigateTo(route) {
       this.$router.push(route);
+    },
+    addtogo(idItem) {
+      const response = await togoService.addToGo({
+        UserUsername: this.$store.state.user.username,
+        ItemIdItem: idItem
+      });
     }
   }
 }

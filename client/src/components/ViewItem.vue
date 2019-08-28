@@ -26,7 +26,7 @@
       <br>
       <v-layout 
         align-center justify-center row fill-height
-        v-if="$store.state.isUserSignedIn"
+        v-if="isUserSignedIn"
       >
         <v-btn>Add to "TO GO"</v-btn>
         <v-btn>Rate</v-btn>
@@ -35,9 +35,16 @@
 </template>
 
 <script>
+import {mapState} from 'vuex';
+
 import itemsService from '../services/itemsService';
 
 export default {
+  computed: {
+    ...mapState([
+      'isUserSignedIn'
+    ])
+  },
   data() {
     return {
       item: null
