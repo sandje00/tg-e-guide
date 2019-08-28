@@ -1,7 +1,10 @@
 import Api from '../services/Api';
 
 export default {
-    addToGo(togo) {
-        return Api().post('addtogo', togo);
-    }
+    addItem(togo) {
+        return Api().post('additem', togo);
+    },
+    addTimetableItem(togo) {
+        return Api().post('addtimetableitem', togo);
+    },
 }

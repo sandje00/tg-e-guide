@@ -78,11 +78,16 @@ export default {
     navigateTo(route) {
       this.$router.push(route);
     },
-    addtogo(idItem) {
-      const response = await togoService.addToGo({
-        UserUsername: this.$store.state.user.username,
-        ItemIdItem: idItem
-      });
+    async addtogo(idItem) {
+        try {
+            await togoService.addItem({
+            UserUsername: this.$store.state.user.username,
+            ItemIdItem: idItem
+          });
+        }
+        catch(error) {
+          alert(error);
+        }
     }
   }
 }

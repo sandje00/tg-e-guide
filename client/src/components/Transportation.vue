@@ -19,6 +19,7 @@
           <template v-slot:actions>
             <v-icon color="#3dbf4c" class="icon add"
               v-if="isUserSignedIn"
+              @click="addtogo(timetableitem.idtimetable_item)"
             >fas fa-plus</v-icon>
           </template>
         </v-banner>
@@ -28,8 +29,10 @@
 </template>
 
 <script>
-import itemsService from '../services/itemsService'
 import {mapState} from 'vuex';
+
+import itemsService from '../services/itemsService'
+import togoService from '../services/togoService';
 
   export default {
     computed: {
@@ -48,6 +51,19 @@ import {mapState} from 'vuex';
     },
     async mounted() {
       this.timetableitems = (await itemsService.fetchTimetableItems()).data;
+    },
+    methods: {
+      async addtogo(idItem) {
+        try {
+            await togoService.addTimetableItem({
+            UserUsername: this.$store.state.user.username,
+            TimetableItemIdtimetableItem: idItem
+          });
+        }
+        catch(error) {
+          alert(error);
+        }
+    }
     }
   }
 </script>
