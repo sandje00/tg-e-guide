@@ -1,0 +1,18 @@
+[
+    {
+      "company": "Smodlaka",
+      "destination": "Split",
+      "departure": "13:00",
+      "arrival": "13:40",
+      "price": "15 HRK",
+      "category": "bus"
+    },
+    {
+      "company": "Smodlaka",
+      "destination": "Split",
+      "departure": "14:00",
+      "arrival": "14:00",
+      "price": "15 HRK",
+      "category": "bus"
+    }
+  ]

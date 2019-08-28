@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Kamerlengo fortress",
+      "picture": "https://media-cdn.tripadvisor.com/media/photo-s/0d/65/11/48/fortress-kamerlengo.jpg",
+      "description_text": "The Kamerlengo Fortress, raised on the southwestern angle of the islet on which there is the historic center of Trogir, was built from 1420 to 1437, immediately after the Venetian conquering of Trogir. It was built in the shape of an irregular trapezoid with four towers at its angles, of which the oldest and the largest was built earlier, in the 14th century.",
+      "view_more_link": "https://www.visittrogir.hr/fortresses",
+      "avg_grade": "3.90",
+      "category": "historicalsite"
+    },
+    {
+      "name": "Trogir City Museum",
+      "picture": "https://croatiareviews.com/media/reviews/photos/original/cc/d5/13/518-trogir-s-city-museum-45-1437838537.jpg",
+      "description_text": "https://croatiareviews.com/culture-and-heritage/trogir-city-museum",
+      "view_more_link": "https://croatiareviews.com/culture-and-heritage/trogir-city-museum",
+      "avg_grade": "4.70",
+      "category": "museum"
+    },
+    {
+      "name": "Restaurant Bocel",
+      "picture": "https://media-cdn.tripadvisor.com/media/photo-s/0c/1b/02/7c/restaurant-bocel-marina.jpg",
+      "description_text": "Seafood, Mediterranean, European, Croatian",
+      "view_more_link": "http://www.restaurantbocel.com/en/",
+      "avg_grade": "5.00",
+      "category": "restaurant"
+    }
+  ]

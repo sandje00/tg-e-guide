@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "cd src && node index",
-    "dev": "cd src && nodemon index"
+    "dev": "cd src && nodemon index",
+    "seed": "node ./seed"
   },
   "keywords": [],
   "author": "",

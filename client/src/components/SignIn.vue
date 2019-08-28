@@ -19,7 +19,7 @@
                   v-model="password"
                 ></v-text-field>
 
-                <div class="error" v-html="error" />
+                <div class="danger-alert" v-html="error" />
 
                 <v-btn @click="signin">
                   Sign In
@@ -54,6 +54,9 @@ export default {
         });
         this.$store.dispatch('setToken', response.data.token);
         this.$store.dispatch('setUser', response.data.user);
+        this.$router.push({
+          name: 'home'
+        });
       }
       catch(error) {
         this.error = error.response.data.error;
@@ -64,7 +67,5 @@ export default {
 </script>
 
 <style scoped>
-  .error {
-    color: red;
-  }
+  
 </style>
