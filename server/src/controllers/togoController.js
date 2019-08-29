@@ -64,19 +64,22 @@ module.exports = {
     },
     async showItems(req, res) {
         try {
+            const username = req.body.UserUsername;
+            console.log(username);
             const useritems = await UserItem.findAll({
                 where: {
-                    UserUsername: req.body.UserUsername
+                    UserUsername: username
                 },
                 include: [{
                     model: Item,
                     attributes: ['idItem', 'name']
                 }]
             });
-        
+
             res.send(useritems);
         }
         catch(err) {
+            console.log(err);
             res.status(500).send({
                 error: 'An error has occured trying to fetch items.'
             });
@@ -90,7 +93,7 @@ module.exports = {
                 },
                 include: [{
                     model: TimetableItem,
-                    attributes: ['company', 'destination', 'departure', 'arrival', 'price']
+                    attributes: ['idtimetable_item', 'company', 'destination', 'departure', 'arrival', 'price']
                 }]
             });
         

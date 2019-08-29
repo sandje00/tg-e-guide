@@ -7,10 +7,10 @@ export default {
     addTimetableItem(togo) {
         return Api().post('addtimetableitem', togo);
     },
-    showItems(UserUsername) {
-        return Api().get('showitems', UserUsername);
+    showItems(user) {
+        return Api().get('showitems', user);
     },
-    showTimetableItems(UserUsername) {
-        return Api().get('showtimetableitems', UserUsername);
+    showTimetableItems(user) {
+        return Api().get('showtimetableitems', user);
     }
 }

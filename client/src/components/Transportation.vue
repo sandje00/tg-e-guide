@@ -14,7 +14,6 @@
             <span>Departure: {{timetableitem.departure}}</span>
             <span>Arrival: {{timetableitem.arrival}}</span>
             <span>Price: {{timetableitem.price}}</span>
-            
           </v-layout>
           <template v-slot:actions>
             <v-icon color="#3dbf4c" class="icon add"
