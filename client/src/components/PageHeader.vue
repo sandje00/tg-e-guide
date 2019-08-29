@@ -28,6 +28,14 @@
         Transportation
       </v-btn>
       <v-btn 
+        v-if="isUserSignedIn"
+        text
+        :to="{
+          name: 'togolist'
+        }">
+        TO GO list
+      </v-btn>
+      <v-btn 
         v-if="!isUserSignedIn"
         text
         :to="{

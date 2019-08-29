@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+
 import Home from '@/components/Home';
 import GettingAround from '@/components/GettingAround';
 import ViewItem from '@/components/ViewItem';
 import Transportation from '@/components/Transportation';
+import ToGoList from '@/components/ToGoList';
 import SignUp from '@/components/SignUp';
 import SignIn from '@/components/SignIn';
 import Test from '@/components/Test';
@@ -32,6 +34,11 @@ export default new VueRouter({
             path: '/transportation',
             name: 'transportation',
             component: Transportation
+        },
+        {
+            path: '/togolist',
+            name: 'togolist',
+            component: ToGoList
         },
         {
             path: '/signup',

@@ -1,5 +1,7 @@
 const {UserItem} = require('../models');
 const {UserTimetableItem} = require('../models');
+const {Item} = require('../models');
+const {TimetableItem} = require('../models');
 
 module.exports = {
     async addItem(req, res) {
@@ -62,12 +64,17 @@ module.exports = {
     },
     async showItems(req, res) {
         try {
-            const items = await UserItem.findAll({
+            const useritems = await UserItem.findAll({
                 where: {
                     UserUsername: req.body.UserUsername
-                }
+                },
+                include: [{
+                    model: Item,
+                    attributes: ['idItem', 'name']
+                }]
             });
-            res.send(items);
+        
+            res.send(useritems);
         }
         catch(err) {
             res.status(500).send({
@@ -77,12 +84,17 @@ module.exports = {
     },
     async showTimetableItems(req, res) {
         try {
-            const items = await UserTimetableItem.findAll({
+            const usertimetableitems = await UserTimetableItem.findAll({
                 where: {
                     UserUsername: req.body.UserUsername
-                }
+                },
+                include: [{
+                    model: TimetableItem,
+                    attributes: ['company', 'destination', 'departure', 'arrival', 'price']
+                }]
             });
-            res.send(items);
+        
+            res.send(usertimetableitems);
         }
         catch(err) {
             res.status(500).send({
