@@ -2,6 +2,7 @@ const authController = require('./controllers/authController');
 const validation = require('./authentication/validation');
 const itemsController = require('./controllers/itemsController');
 const togoController = require('./controllers/togoController');
+const ratingsController = require('./controllers/ratingsController');
 
 const testController = require('./controllers/testController');
 
@@ -18,6 +19,9 @@ module.exports = (app) => {
     app.get('/showitems', togoController.showItems);
     app.get('/showtimetableitems', togoController.showTimetableItems);
     /* app.delete('/deleteitem', togoController.deleteItem); */
+
+    app.get('/ratings/:idItem', ratingsController.fetchRatings);
+    app.post('/rate', ratingsController.addRating);
 
     app.get('/allitems', testController.fetchAllItems);
     app.get('/alltimetableitems', testController.fetchAllTimetableItems);
