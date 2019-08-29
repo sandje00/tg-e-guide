@@ -15,8 +15,9 @@ module.exports = (app) => {
 
     app.post('/additem', togoController.addItem);
     app.post('/addtimetableitem', togoController.addTimetableItem);
-    /* app.get('/showitems', togoController.showItems);
-    app.delete('/deleteitem', togoController.deleteItem); */
+    app.get('/showitems', togoController.showItems);
+    app.get('/showtimetableitems', togoController.showTimetableItems);
+    /* app.delete('/deleteitem', togoController.deleteItem); */
 
     app.get('/allitems', testController.fetchAllItems);
     app.get('/alltimetableitems', testController.fetchAllTimetableItems);

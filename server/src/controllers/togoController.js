@@ -59,5 +59,35 @@ module.exports = {
                 error: 'An error has occured trying add item to your TO GO list.'
             });
         }
+    },
+    async showItems(req, res) {
+        try {
+            const items = await UserItem.findAll({
+                where: {
+                    UserUsername: req.body.UserUsername
+                }
+            });
+            res.send(items);
+        }
+        catch(err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch items.'
+            });
+        }
+    },
+    async showTimetableItems(req, res) {
+        try {
+            const items = await UserTimetableItem.findAll({
+                where: {
+                    UserUsername: req.body.UserUsername
+                }
+            });
+            res.send(items);
+        }
+        catch(err) {
+            res.status(500).send({
+                error: 'An error has occured trying to fetch items.'
+            });
+        }
     }
 };
