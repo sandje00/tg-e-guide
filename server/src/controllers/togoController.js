@@ -64,15 +64,14 @@ module.exports = {
     },
     async showItems(req, res) {
         try {
-            const username = req.body.UserUsername;
-            console.log(username);
+            const username = req.params.UserUsername;
             const useritems = await UserItem.findAll({
                 where: {
                     UserUsername: username
                 },
                 include: [{
                     model: Item,
-                    attributes: ['idItem', 'name']
+                    attributes: ['name']
                 }]
             });
 
@@ -87,21 +86,72 @@ module.exports = {
     },
     async showTimetableItems(req, res) {
         try {
+            const username = req.params.UserUsername;
             const usertimetableitems = await UserTimetableItem.findAll({
                 where: {
-                    UserUsername: req.body.UserUsername
+                    UserUsername: username
                 },
                 include: [{
                     model: TimetableItem,
-                    attributes: ['idtimetable_item', 'company', 'destination', 'departure', 'arrival', 'price']
+                    attributes: ['company', 'destination', 'departure', 'arrival', 'price']
                 }]
             });
-        
+
             res.send(usertimetableitems);
         }
         catch(err) {
+            console.log(err);
             res.status(500).send({
                 error: 'An error has occured trying to fetch items.'
+            });
+        }   
+    },
+    async deleteItem(req, res) {
+        try {
+            const useritemid = req.params.id;
+            const useritem = await UserItem.findOne({
+                where: {
+                    id: useritemid
+                }
+            });
+
+            if(!useritem) {
+                return res.status(400).send({
+                    error: 'There is no useritem with such id.'
+                })
+            }
+
+            await useritem.destroy();
+            res.send(useritem);
+        }
+        catch(err) {
+            res.status(500).send({
+                error: 'An error has occured trying to delete item.'
+            });
+        }
+    },
+    async deleteTimetableItem(req, res) {
+        try {
+            const usertimetableitemid = req.params.id;
+            const usertimetableitem = await UserTimetableItem.findOne({
+                where: {
+                    id: usertimetableitemid
+                }
+            });
+
+            if(!usertimetableitem) {
+                return res.status(400).send({
+                    error: 'There is no usertimetableitem with such id.'
+                })
+            }
+
+            await usertimetableitem.destroy();
+            res.send(usertimetableitem);
+            
+        }
+        catch(err) {
+            res.status(500).send({
+                error: 'An error has occured trying to delete item.'
             });
         }
     }

@@ -23,18 +23,18 @@
               })">
               fas fa-info-circle</v-icon>
             <v-icon
-              color="#f53636">
+              color="#f53636"
+              @click="deleteItem(item.id)">
               fas fa-trash-alt</v-icon>
           </template>
         </v-banner>
 
-        <v-divider
-          v-if="items && timetibleitems">
-        </v-divider>
+        <br>
+        <br>
 
-        <!-- <v-banner single-line 
+        <v-banner single-line 
           v-for="timetableitem in timetableitems"
-          :key="timetableitem.idtimetable_item">
+          :key="timetableitem.TimetableItemIdtimetableItem">
 
             <v-layout align-center justify-space-around row fill-height>
               <span>{{timetableitem.TimetableItem.company}}</span>
@@ -46,10 +46,11 @@
 
             <template v-slot:actions>
               <v-icon
-                color="#f53636">
+                color="#f53636"
+                @click="deleteItem(timetableitem.id)">
                 fas fa-trash-alt</v-icon>
             </template>
-        </v-banner> -->
+        </v-banner>
   </div>
 </template>
 
@@ -65,10 +66,8 @@ import togoService from '../services/togoService';
     },
     async mounted() {
       try {
-        this.items = (await togoService.showItems({
-          UserUsername: this.$store.state.user.username
-        })).data;
-          /* this.timetableitems = (await togoService.showTimetableItems(this.user)).data; */
+        this.items = (await togoService.showItems(this.$store.state.user.username)).data;
+        this.timetableitems = (await togoService.showTimetableItems(this.$store.state.user.username)).data;
       }
       catch(err) {
         alert(err);
@@ -77,6 +76,12 @@ import togoService from '../services/togoService';
     methods: {
       navigateTo(route) {
         this.$router.push(route);
+      },
+      async deleteItem(useritem) {
+        await togoService.deleteItem(useritem);
+      },
+      async deleteTimetableItem(usertimetableitem) {
+        await togoService.deleteTimetableItem(usertimetableitem);
       }
     }
   }

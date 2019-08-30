@@ -16,9 +16,10 @@ module.exports = (app) => {
 
     app.post('/additem', togoController.addItem);
     app.post('/addtimetableitem', togoController.addTimetableItem);
-    app.get('/showitems', togoController.showItems);
-    app.get('/showtimetableitems', togoController.showTimetableItems);
-    /* app.delete('/deleteitem', togoController.deleteItem); */
+    app.get('/showitems/:UserUsername', togoController.showItems);
+    app.get('/showtimetableitems/:UserUsername', togoController.showTimetableItems);
+    app.delete('/deleteitem/:id', togoController.deleteItem);
+    app.delete('/deletetimetableitem/:id', togoController.deleteTimetableItem);
 
     app.get('/ratings/:idItem', ratingsController.fetchRatings);
     app.post('/rate', ratingsController.addRating);

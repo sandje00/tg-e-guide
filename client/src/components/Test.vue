@@ -30,6 +30,37 @@
         <v-btn>Add to "TO GO"</v-btn>
         <v-btn>Rate</v-btn>
       </v-layout>
+
+      <br>
+      <br>
+      <v-container class="grey lighten-5">
+        <v-row no-gutters>
+          <v-col>
+            
+          </v-col>
+          <v-col>
+              <span class="highlight">Ratings</span>
+              <v-card
+                max-width="500"
+                class="mx-auto"
+              >
+                <v-card-title>
+                  <span>stella: </span>
+                  <v-icon 
+                    color="#ffb300" class="star"
+                    v-for="(star, i) in 4" :key="i">
+                    fas fa-star
+                    </v-icon>
+                </v-card-title>
+                <v-card-text>Not bad.</v-card-text>
+                
+              </v-card>
+          </v-col>
+          <v-col>
+            
+          </v-col>
+        </v-row>
+      </v-container>
   </div>
 </template>
 
