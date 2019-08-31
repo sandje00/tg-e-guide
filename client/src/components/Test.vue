@@ -10,6 +10,7 @@
                 <v-layout align-center justify-center row fill-height>
                     <v-icon color="#ffb300" class="icon star">fas fa-star</v-icon><span class="avg">3.90</span>
                 </v-layout>
+                <v-btn>Add to "TO GO"</v-btn>
             </v-layout>
           </v-col>
           <v-col>
@@ -24,15 +25,10 @@
 
       <br>
       <br>
-      <v-layout 
-        align-center justify-center row fill-height
-      >
-        <v-btn>Add to "TO GO"</v-btn>
-        <v-btn>Rate</v-btn>
+      <v-layout align-center justify-center row fill-height>
+        <RateDialog />
       </v-layout>
 
-      <br>
-      <br>
       <v-container class="grey lighten-5">
         <v-row no-gutters>
           <v-col>
@@ -65,8 +61,12 @@
 </template>
 
 <script>
+import RateDialog from './RateDialog';
+
   export default {
-    
+    components: {
+      RateDialog
+    }
   }
 </script>
 

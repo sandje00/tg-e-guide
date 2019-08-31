@@ -10,6 +10,7 @@
                 <v-layout align-center justify-center row fill-height>
                     <v-icon color="#ffb300" class="icon star">fas fa-star</v-icon><span class="avg">{{item.avg_grade}}</span>
                 </v-layout>
+                <v-btn v-if="isUserSignedIn">Add to "TO GO"</v-btn>
             </v-layout>
           </v-col>
           <v-col>
@@ -28,8 +29,7 @@
         align-center justify-center row fill-height
         v-if="isUserSignedIn"
       >
-        <v-btn>Add to "TO GO"</v-btn>
-        <v-btn>Rate</v-btn>
+        <RateDialog />
       </v-layout>
 
       <br>
@@ -42,10 +42,12 @@ import {mapState} from 'vuex';
 
 import itemsService from '../services/itemsService';
 import Ratings from './Ratings';
+import RateDialog from './RateDialog';
 
 export default {
   components: {
-    Ratings
+    Ratings,
+    RateDialog
   },
   computed: {
     ...mapState([
