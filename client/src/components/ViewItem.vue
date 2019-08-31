@@ -31,6 +31,9 @@
         <v-btn>Add to "TO GO"</v-btn>
         <v-btn>Rate</v-btn>
       </v-layout>
+
+      <br>
+      <Ratings />
   </div>
 </template>
 
@@ -38,8 +41,12 @@
 import {mapState} from 'vuex';
 
 import itemsService from '../services/itemsService';
+import Ratings from './Ratings';
 
 export default {
+  components: {
+    Ratings
+  },
   computed: {
     ...mapState([
       'isUserSignedIn'
@@ -47,7 +54,8 @@ export default {
   },
   data() {
     return {
-      item: null
+      item: null,
+      ratings: null
     }
   },
   async mounted() {
