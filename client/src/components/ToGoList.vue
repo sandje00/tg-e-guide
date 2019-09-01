@@ -47,7 +47,7 @@
             <template v-slot:actions>
               <v-icon
                 color="#f53636"
-                @click="deleteItem(timetableitem.id)">
+                @click="deleteTimetableItem(timetableitem.id)">
                 fas fa-trash-alt</v-icon>
             </template>
         </v-banner>
@@ -78,10 +78,20 @@ import togoService from '../services/togoService';
         this.$router.push(route);
       },
       async deleteItem(useritem) {
-        await togoService.deleteItem(useritem);
+        try {
+          await togoService.deleteItem(useritem);
+        }
+        catch(error) {
+          alert(error.response.data.error);
+        }
       },
       async deleteTimetableItem(usertimetableitem) {
-        await togoService.deleteTimetableItem(usertimetableitem);
+        try {
+          await togoService.deleteTimetableItem(usertimetableitem);
+        }
+        catch(error) {
+          alert(error.response.data.error);
+        }
       }
     }
   }
