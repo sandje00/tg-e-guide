@@ -12,20 +12,19 @@ function jwtSignUser(user) {
 
 module.exports = {
     async signup(req, res) {
-        try {
-            const user = await User.create(req.body);
-            const user_json = user.toJSON();
-            res.send({
-                user: user_json,
-                token: jwtSignUser(user_json),
-                success: 'You have signed up successfully!'
+        await User.create(req.body)
+            .then(user => {
+                const user_json = user.toJSON();
+                res.send({
+                    user: user_json,
+                    token: jwtSignUser(user_json),
+                }); 
+            })
+            .catch(err => {
+                res.status(400).send({
+                    error: `<b>This username is already in use.</b>`
+                });
             });
-        }
-        catch(err) {
-            res.status(400).send({
-                error: `<b>This username is already in use.</b>`
-            });
-        }
     },
     async signin(req, res) {
         try {

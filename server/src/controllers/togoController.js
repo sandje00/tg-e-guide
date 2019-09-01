@@ -67,48 +67,46 @@ module.exports = {
         }
     },
     async showItems(req, res) {
-        try {
-            const username = req.user.username;
-            const useritems = await UserItem.findAll({
-                where: {
-                    UserUsername: username
-                },
-                include: [{
-                    model: Item,
-                    attributes: ['name']
-                }]
-            });
+        const username = req.user.username;
 
-            res.send(useritems);
-        }
-        catch(err) {
-            console.log(err);
-            res.status(500).send({
-                error: 'An error has occured trying to fetch items.'
+        await UserItem.findAll({
+            where: {
+                UserUsername: username
+            },
+            include: [{
+                model: Item,
+                attributes: ['name']
+            }]
+        })
+            .then(useritems => {
+                res.send(useritems);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    error: 'An error has occured trying to fetch items.'
+                });
             });
-        }
     },
     async showTimetableItems(req, res) {
-        try {
-            const username = req.user.username;
-            const usertimetableitems = await UserTimetableItem.findAll({
-                where: {
-                    UserUsername: username
-                },
-                include: [{
-                    model: TimetableItem,
-                    attributes: ['company', 'destination', 'departure', 'arrival', 'price']
-                }]
-            });
+        const username = req.user.username;
 
-            res.send(usertimetableitems);
-        }
-        catch(err) {
-            console.log(err);
-            res.status(500).send({
-                error: 'An error has occured trying to fetch items.'
+        await UserTimetableItem.findAll({
+            where: {
+                UserUsername: username
+            },
+            include: [{
+                model: TimetableItem,
+                attributes: ['company', 'destination', 'departure', 'arrival', 'price']
+            }]
+        })
+            .then(usertimetableitems => {
+                res.send(usertimetableitems);
+            })
+            .catch(err => {
+                res.status(500).send({
+                    error: 'An error has occured trying to fetch items.'
+                });
             });
-        }   
     },
     async deleteItem(req, res) {
         try {
@@ -158,5 +156,5 @@ module.exports = {
                 error: 'An error has occured trying to delete item.'
             });
         }
-    }
+    } 
 };
