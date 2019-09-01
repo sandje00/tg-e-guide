@@ -66,8 +66,8 @@ import togoService from '../services/togoService';
     },
     async mounted() {
       try {
-        this.items = (await togoService.showItems(this.$store.state.user.username)).data;
-        this.timetableitems = (await togoService.showTimetableItems(this.$store.state.user.username)).data;
+        this.items = (await togoService.showItems()).data;
+        this.timetableitems = (await togoService.showTimetableItems()).data;
       }
       catch(err) {
         alert(err);

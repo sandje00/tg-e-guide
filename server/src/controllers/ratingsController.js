@@ -6,7 +6,10 @@ module.exports = {
             const ratings = await Rating.findAll({
                 where: {
                     ItemIdItem: req.params.idItem
-                }
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ]
             });
             res.send(ratings);
         }

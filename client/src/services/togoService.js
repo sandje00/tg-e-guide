@@ -1,17 +1,17 @@
 import Api from '../services/Api';
 
 export default {
-    addItem(togo) {
-        return Api().post('additem', togo);
+    addItem(idItem) {
+        return Api().post(`additem/${idItem}`);
     },
-    addTimetableItem(togo) {
-        return Api().post('addtimetableitem', togo);
+    addTimetableItem(idItem) {
+        return Api().post(`addtimetableitem/${idItem}`);
     },
-    showItems(username) {
-        return Api().get(`showitems/${username}`);
+    showItems() {
+        return Api().get('showitems');
     },
-    showTimetableItems(username) {
-        return Api().get(`showtimetableitems/${username}`);
+    showTimetableItems() {
+        return Api().get('showtimetableitems');
     },
     deleteItem(useritem) {
         return Api().delete(`deleteitem/${useritem}`);

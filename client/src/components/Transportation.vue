@@ -54,13 +54,11 @@ import togoService from '../services/togoService';
     methods: {
       async addtogo(idItem) {
         try {
-            await togoService.addTimetableItem({
-            UserUsername: this.$store.state.user.username,
-            TimetableItemIdtimetableItem: idItem
-          });
+          const response = (await togoService.addTimetableItem(idItem)).data;
+          alert(response.message);
         }
         catch(error) {
-          alert(error);
+          alert(error.response.data.error);
         }
     }
     }

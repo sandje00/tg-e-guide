@@ -6,8 +6,8 @@ const {TimetableItem} = require('../models');
 module.exports = {
     async addItem(req, res) {
         try {
-            const username = req.body.UserUsername;
-            const idItem = req.body.ItemIdItem;
+            const username = req.user.username;
+            const idItem = req.params.idItem;
             const Togo = await UserItem.findOne({
                 where: {
                     UserUsername: username,
@@ -17,15 +17,17 @@ module.exports = {
 
             if(Togo) {
                 return res.status(400).send({
-                    error: `<b>You have already added this item to your TO GO list.</b>`
+                    error: 'You have already added this item to your TO GO list.'
                 });
             }
 
-            const newTogo = await UserItem.create({
+            await UserItem.create({
                 UserUsername: username,
                 ItemIdItem: idItem
             });
-            res.send(newTogo.toJSON());
+            res.send({
+                message: 'The item has been added to your TO GO list successfully.'
+            });
         }
         catch(err) {
             res.status(500).send({
@@ -35,8 +37,8 @@ module.exports = {
     },
     async addTimetableItem(req, res) {
         try {
-            const username = req.body.UserUsername;
-            const idtimetable_item = req.body.TimetableItemIdtimetableItem;
+            const username = req.user.username;
+            const idtimetable_item = req.params.idItem;
             const Togo = await UserTimetableItem.findOne({
                 where: {
                     UserUsername: username,
@@ -46,15 +48,17 @@ module.exports = {
 
             if(Togo) {
                 return res.status(400).send({
-                    error: `<b>You have already added this item to your TO GO list.</b>`
+                    error: 'You have already added this item to your TO GO list.'
                 });
             }
 
-            const newTogo = await UserTimetableItem.create({
+            await UserTimetableItem.create({
                 UserUsername: username,
                 TimetableItemIdtimetableItem: idtimetable_item
             });
-            res.send(newTogo.toJSON());
+            res.send({
+                message: 'The item has been added to your TO GO list successfully.'
+            });
         }
         catch(err) {
             res.status(500).send({
@@ -64,7 +68,7 @@ module.exports = {
     },
     async showItems(req, res) {
         try {
-            const username = req.params.UserUsername;
+            const username = req.user.username;
             const useritems = await UserItem.findAll({
                 where: {
                     UserUsername: username
@@ -86,7 +90,7 @@ module.exports = {
     },
     async showTimetableItems(req, res) {
         try {
-            const username = req.params.UserUsername;
+            const username = req.user.username;
             const usertimetableitems = await UserTimetableItem.findAll({
                 where: {
                     UserUsername: username

@@ -10,7 +10,6 @@
                 <v-layout align-center justify-center row fill-height>
                     <v-icon color="#ffb300" class="icon star">fas fa-star</v-icon><span class="avg">{{item.avg_grade}}</span>
                 </v-layout>
-                <v-btn v-if="isUserSignedIn">Add to "TO GO"</v-btn>
             </v-layout>
           </v-col>
           <v-col>

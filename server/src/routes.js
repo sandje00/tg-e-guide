@@ -22,16 +22,16 @@ module.exports = (app) => {
     app.get('/timetableitems',
         itemsController.fetchTimetableItems);
 
-    app.post('/additem',
+    app.post('/additem/:idItem',
         is_authenticated,
         togoController.addItem);
-    app.post('/addtimetableitem',
+    app.post('/addtimetableitem/:idItem',
         is_authenticated,
         togoController.addTimetableItem);
-    app.get('/showitems/:UserUsername',
+    app.get('/showitems',
         is_authenticated,
         togoController.showItems);
-    app.get('/showtimetableitems/:UserUsername',
+    app.get('/showtimetableitems',
         is_authenticated,
         togoController.showTimetableItems);
     app.delete('/deleteitem/:id',

@@ -1,7 +1,9 @@
 <template>
   <div>
     <v-toolbar>
-      <v-toolbar-title>Trogir eGuide</v-toolbar-title>
+      <v-toolbar-title>
+        Trogir eGuide
+      </v-toolbar-title>
 
       <div class="flex-grow-1"></div>
 

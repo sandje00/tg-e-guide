@@ -80,13 +80,11 @@ export default {
     },
     async addtogo(idItem) {
         try {
-            await togoService.addItem({
-            UserUsername: this.$store.state.user.username,
-            ItemIdItem: idItem
-          });
+          const response = (await togoService.addItem(idItem)).data;
+          alert(response.message);
         }
         catch(error) {
-          alert(error);
+          alert(error.response.data.error);
         }
     }
   }
