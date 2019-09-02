@@ -64,16 +64,6 @@ export default {
 </script>
 
 <style scoped>
-  .star {
-    padding-right: 2px;
-  }
-
-  .avg {
-    color: gray;
-    font-weight: bold;
-    font-size: 1.8em;
-  }
-
   .highlight {
     color: #858585;
     font-weight: bold;

@@ -6,8 +6,6 @@ const ratingsController = require('./controllers/ratingsController');
 const validation = require('./authentication/validation');
 const is_authenticated = require('./authentication/is_authenticated');
 
-const testController = require('./controllers/testController');
-
 module.exports = (app) => {
     app.post('/signup',
         validation.signup,
@@ -46,8 +44,4 @@ module.exports = (app) => {
     app.post('/rate',
         is_authenticated,
         ratingsController.addRating);
-
-    app.get('/allitems', testController.fetchAllItems);
-    app.get('/alltimetableitems', testController.fetchAllTimetableItems);
-    app.get('/allusers', testController.fetchAllUsers);
 };

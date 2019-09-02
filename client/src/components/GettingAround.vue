@@ -17,7 +17,7 @@
               height="200px"
               :src="item.picture"
             >
-              <v-card-title class="align-end fill-height">{{item.name}}</v-card-title>
+              <v-card-title class="align-end fill-height card-title">{{item.name}}</v-card-title>
             </v-img>
 
             <v-card-text>
@@ -91,14 +91,15 @@ export default {
 </script>
 
 <style scoped>
+  .card-title {
+    font-weight: bold;
+    color: #f53636;
+  }
+
   .icon {
     padding: 10px;
   }
-
-  .star {
-    padding-right: 2px;
-  }
-
+  
   .add {
     padding-left: 0px;
   }

@@ -76,6 +76,7 @@ import togoService from '../services/togoService';
       async deleteItem(useritem) {
         try {
           await togoService.deleteItem(useritem);
+          alert('Item deleted successfully.');
         }
         catch(error) {
           alert(error.response.data.error);
@@ -84,6 +85,7 @@ import togoService from '../services/togoService';
       async deleteTimetableItem(usertimetableitem) {
         try {
           await togoService.deleteTimetableItem(usertimetableitem);
+          alert('Item deleted successfully.');
         }
         catch(error) {
           alert(error.response.data.error);

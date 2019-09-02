@@ -17,9 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         view_more_link: {
             type: DataTypes.STRING
         },
-        avg_grade: {
-            type: DataTypes.DECIMAL(3, 2)
-        },
         category: {
             type: DataTypes.STRING
         }

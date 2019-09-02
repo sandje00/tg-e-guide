@@ -59,6 +59,7 @@ import ratingsService from '../services/ratingsService';
                     ItemIdItem: this.$store.state.route.params.idItem
                 });
                 this.dialog = false;
+                alert('Rating added successfully.');
             }
             catch(err) {
                 alert(err);
