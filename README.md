@@ -6,7 +6,7 @@ This is a simple Vue.js / Express.js city guide web app for **ExtensionEngine Su
 
 ### How to run the app
 
-In `config.js` fill in your database user, password, dialect.
+In `server/src/config.js` fill in your database user, password, dialect.
 
 ### Client - Terminal A
 
