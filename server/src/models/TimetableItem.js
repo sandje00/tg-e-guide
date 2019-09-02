@@ -1,5 +1,5 @@
-module.exports = (sequelize, DataTypes) => 
-    sequelize.define('TimetableItem', {
+module.exports = (sequelize, DataTypes) => {
+    const TimetableItem = sequelize.define('TimetableItem', {
         idtimetable_item: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -27,3 +27,10 @@ module.exports = (sequelize, DataTypes) =>
     {
         timestamps: false
     })
+
+    TimetableItem.associate = function (models) {
+
+    }
+
+    return TimetableItem;
+}

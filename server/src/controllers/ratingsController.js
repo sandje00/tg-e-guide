@@ -1,23 +1,24 @@
-const {Rating} = require("../models");
+const {Rating} = require('../models');
 
 module.exports = {
     async fetchRatings(req, res) {
-        try {
-            const ratings = await Rating.findAll({
-                where: {
-                    ItemIdItem: req.params.idItem
-                },
-                order: [
-                    ['createdAt', 'DESC']
-                ]
+        await Rating.findAll({
+            where: {
+                ItemIdItem: req.params.idItem
+            },
+            order: [
+                ['createdAt', 'DESC']
+            ]
+        })
+            .then(ratings => {
+                res.send(ratings);
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).send({
+                    error: 'An error has occured trying to fetch ratings.'
+                })
             });
-            res.send(ratings);
-        }
-        catch(err) {
-            res.status(500).send({
-                error: 'An error has occured trying to fetch ratings.'
-            });
-        }
     },
     async addRating(req, res) {
         try {
@@ -34,7 +35,7 @@ module.exports = {
         }
         catch(err) {
             res.status(500).send({
-                error: 'An error has occured trying to fetch ratings.'
+                error: 'An error has occured trying to add rating.'
             });
         }
     }

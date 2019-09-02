@@ -2,10 +2,6 @@
   <div>
       <h1>TO GO list</h1>
 
-      <h2 class="highlight"
-        v-if="!items && !timetableitems">
-        No items to show</h2>
-
       <v-banner single-line 
         v-for="item in items"
         :key="item.ItemIdItem">

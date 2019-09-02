@@ -6,15 +6,17 @@ const {
     Item,
     TimetableItem,
     UserItem,
-    UserTimetableItem
+    UserTimetableItem,
+    Rating
 } = require('../src/models');
 const users = require('./users.json');
 const items = require('./items.json');
 const timetableitems = require('./timetableitems.json');
 const useritems = require('./useritems.json');
 const usertimetableitems = require('./usertimetableitems.json');
+const ratings = require('./ratings.json');
 
-sequelize.sync({force: false})
+sequelize.sync({force: true})
   .then(async function () {
         await Promise.all(
             users.map(user => {
@@ -43,6 +45,12 @@ sequelize.sync({force: false})
         await Promise.all(
             usertimetableitems.map(usertimetableitem => {
                 UserTimetableItem.create(usertimetableitem);
+            })
+        );
+
+        await Promise.all(
+            ratings.map(rating => {
+                Rating.create(rating);
             })
         );
   });

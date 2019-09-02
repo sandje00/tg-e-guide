@@ -38,5 +38,9 @@ module.exports = (sequelize, DataTypes) => {
         return bcrypt.compareAsync(hpwd, this.hpwd);
     }
 
+    User.associate = function (models) {
+
+    }
+
     return User;
 }

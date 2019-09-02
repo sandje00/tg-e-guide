@@ -7,9 +7,6 @@
           <v-col>
             <v-layout align-center justify-start column fill-height>
                 <v-img width="400px" :src="item.picture"></v-img>
-                <v-layout align-center justify-center row fill-height>
-                    <v-icon color="#ffb300" class="icon star">fas fa-star</v-icon><span class="avg">{{item.avg_grade}}</span>
-                </v-layout>
             </v-layout>
           </v-col>
           <v-col>
