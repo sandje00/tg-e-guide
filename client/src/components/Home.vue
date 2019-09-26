@@ -24,16 +24,3 @@
     <v-img src="https://www.croatianvillas.com/wp-content/uploads/trogir-overviews.jpg"></v-img>
   </div>
 </template>
-
-
-
-<script>
-  export default {
-    
-  }
-</script>
-
-
-<style scoped>
-
-</style>

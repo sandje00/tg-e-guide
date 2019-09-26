@@ -8,57 +8,27 @@
       <div class="flex-grow-1"></div>
 
       <v-toolbar-items>
-        <v-btn 
-        text
-        :to="{
-          name: 'home'
-        }">
-        Home
-      </v-btn>
-      <v-btn 
-        text
-        :to="{
-          name: 'gettingaround'
-        }">
-        Getting around
-      </v-btn>
-      <v-btn 
-        text
-        :to="{
-          name: 'transportation'
-        }">
-        Transportation
-      </v-btn>
-      <v-btn 
-        v-if="isUserSignedIn"
-        text
-        :to="{
-          name: 'togolist'
-        }">
-        TO GO list
-      </v-btn>
-      <v-btn 
-        v-if="!isUserSignedIn"
-        text
-        :to="{
-          name: 'signin'
-        }">
-        Sign In
-      </v-btn>
-      <v-btn 
-        v-if="!isUserSignedIn"
-        text
-        :to="{
-          name: 'signup'
-        }">
-        Sign Up
-      </v-btn>
-      <v-btn 
-        v-if="isUserSignedIn"
-        text
-        @click="signout">
-        Sign Out
-      </v-btn>
+        <v-btn text :to="{ name: 'home' }">
+          Home
+        </v-btn>
+        <v-btn text :to="{ name: 'gettingaround' }">
+          Getting around
+        </v-btn>
+        <v-btn text :to="{ name: 'transportation' }">
+          Transportation
+        </v-btn>
+        <v-btn v-if="isUserSignedIn" text :to="{ name: 'togolist' }">
+          TO GO list
+        </v-btn>
+        <v-btn v-if="!isUserSignedIn" text :to="{ name: 'signin' }">
+          Sign In
+        </v-btn>
+        <v-btn v-if="!isUserSignedIn" text :to="{ name: 'signup' }">
+          Sign Up
+        </v-btn>
+        <v-btn v-if="isUserSignedIn" text @click="signout">
+          Sign Out
+        </v-btn>
       </v-toolbar-items>
     </v-toolbar>
   </div>
@@ -84,7 +54,3 @@ import {mapState} from 'vuex';
     }
   }
 </script>
-
-<style scoped>
-
-</style>

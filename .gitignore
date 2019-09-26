@@ -1,2 +1,4 @@
 client/node_modules
 server/node_modules
+server/src/config.js
+client/src/components/Test.vue

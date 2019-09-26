@@ -68,7 +68,3 @@ import ratingsService from '../services/ratingsService';
     }
   }
 </script>
-
-<style scoped>
-
-</style>
