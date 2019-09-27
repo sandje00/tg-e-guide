@@ -65,3 +65,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .form-input {
+    width: 400px;  
+  }
+</style>
