@@ -1,10 +1,10 @@
-import Api from '../services/Api';
+import api from '../services/Api';
 
 export default {
     fetchRatings(idItem) {
-        return Api().get(`ratings/${idItem}`);
+        return api.get(`ratings/${idItem}`);
     },
     addRating(rating) {
-        return Api().post('rate', rating);
+        return api.post('rate', rating);
     }
 }

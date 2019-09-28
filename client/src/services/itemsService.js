@@ -1,13 +1,13 @@
-import Api from '../services/Api';
+import api from '../services/Api';
 
 export default {
     fetchItems() {
-        return Api().get('items');
+        return api.get('items');
     },
     fetchOneItem(idItem) {
-        return Api().get(`viewitem/${idItem}`);
+        return api.get(`viewitem/${idItem}`);
     },
     fetchTimetableItems() {
-        return Api().get('timetableitems');
+        return api.get('timetableitems');
     }
 }

@@ -1,22 +1,22 @@
-import Api from '../services/Api';
+import api from '../services/Api';
 
 export default {
     addItem(idItem) {
-        return Api().post(`additem/${idItem}`);
+        return api.post(`additem/${idItem}`);
     },
     addTimetableItem(idItem) {
-        return Api().post(`addtimetableitem/${idItem}`);
+        return api.post(`addtimetableitem/${idItem}`);
     },
     showItems() {
-        return Api().get('showitems');
+        return api.get('showitems');
     },
     showTimetableItems() {
-        return Api().get('showtimetableitems');
+        return api.get('showtimetableitems');
     },
     deleteItem(useritem) {
-        return Api().delete(`deleteitem/${useritem}`);
+        return api.delete(`deleteitem/${useritem}`);
     },
     deleteTimetableItem(usertimetableitem) {
-        return Api().delete(`deletetimetableitem/${usertimetableitem}`);
+        return api.delete(`deletetimetableitem/${usertimetableitem}`);
     }
 }
