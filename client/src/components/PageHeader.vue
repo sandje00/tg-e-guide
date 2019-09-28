@@ -7,7 +7,7 @@
 
       <div class="flex-grow-1"></div>
 
-      <show-at breakpoint="mediumAndAbove">
+      <hide-at breakpoint="small">
         <v-toolbar-items>
           <v-btn text :to="{ name: 'home' }">
             Home
@@ -31,9 +31,9 @@
             Sign Out
           </v-btn>
         </v-toolbar-items>
-      </show-at>
+      </hide-at>
 
-      <hide-at breakpoint="medium">
+      <show-at breakpoint="small">
         <div>
           <v-menu offset-y>
             <template v-slot:activator="{ on }">
@@ -72,7 +72,7 @@
 
           </v-menu>
         </div>
-      </hide-at>
+      </show-at>
     </v-toolbar>
   </div>
 </template>
