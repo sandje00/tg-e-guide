@@ -73,6 +73,7 @@
           </v-menu>
         </div>
       </show-at>
+      
     </v-toolbar>
   </div>
 </template>
@@ -91,12 +92,6 @@ import {showAt, hideAt} from 'vue-breakpoints';
         'isUserSignedIn'
       ])
     },
-    data() {
-      return {
-        drawer: false,
-        group: null,
-      }
-    },
     methods: {
       signout () {
         this.$store.dispatch('setToken', null);
@@ -104,11 +99,6 @@ import {showAt, hideAt} from 'vue-breakpoints';
         this.$router.push({
           name: 'home'
         });
-      }
-    },
-    watch: {
-      group () {
-        this.drawer = false;
       }
     }
   }
