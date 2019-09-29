@@ -1,8 +1,5 @@
-const sequelize = require('sequelize');
-
 const {Item} = require('../models');
 const {TimetableItem} = require('../models');
-const {Rating} = require('../models');
 
 module.exports = {
     async fetchItems(req, res) {

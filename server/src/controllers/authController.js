@@ -22,7 +22,7 @@ module.exports = {
         await User.create(req.body)
             .then(user => {
                 const user_json = user.toJSON();
-                res.send({
+                res.status(201).send({
                     user: user_json,
                     token: jwtSignUser(user_json),
                 }); 
@@ -54,7 +54,7 @@ module.exports = {
             }
 
             const user_json = user.toJSON();
-            res.send({
+            res.status(200).send({
                 user: user_json,
                 token: jwtSignUser(user_json)
             });
