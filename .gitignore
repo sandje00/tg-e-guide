@@ -1,5 +1,5 @@
 client/node_modules
 server/node_modules
 client/src/components/Test.vue
-server/src/.env
+server/.env
 client/.env

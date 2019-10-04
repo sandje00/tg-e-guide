@@ -11,7 +11,7 @@ module.exports = {
             })
             .catch(err => {
                 res.status(500).send({
-                    error: 'An error has occured trying to fetch items.'
+                    error: err.message
                 });
             });
     }, 
@@ -24,7 +24,7 @@ module.exports = {
             })
             .catch(err => {
                 res.status(500).send({
-                    error: 'An error has occured trying to fetch the item.'
+                    error: err.message
                 });
             });
     },
@@ -35,7 +35,7 @@ module.exports = {
             })
             .catch(err => {
                 res.status(500).send({
-                    error: 'An error has occured trying to fetch timetable items.'
+                    error: err.message
                 });
             });
     } 

@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 /* const morgan = require('morgan'); */
 
+require('dotenv').config({ path: '../.env' });
+
 const config = require('./config');
 const {sequelize} = require('./models');
 

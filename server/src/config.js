@@ -1,6 +1,4 @@
-require('dotenv').config();
-
-module.exports = {
+const config = {
     PORT: process.env.PORT,
     db: {
         database: process.env.DB_NAME,
@@ -15,3 +13,5 @@ module.exports = {
         jwtSecret: process.env.JWT_SECRET
     }
 };
+
+module.exports = config;
