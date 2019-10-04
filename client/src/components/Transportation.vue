@@ -5,7 +5,7 @@
       :key="index"
     >
       <v-expansion-panel-header>{{category}}</v-expansion-panel-header>
-      <v-expansion-panel-content v-for="timetableitem in timetableitems" :key="timetableitem.idtimetable_item">
+      <v-expansion-panel-content v-for="timetableitem in timetableitems" :key="timetableitem.id">
         <v-banner single-line 
         v-if="timetableitem.category === index">
           <v-layout align-center justify-space-around row fill-height>
@@ -18,7 +18,7 @@
           <template v-slot:actions>
             <v-icon color="#3dbf4c" class="icon add"
               v-if="isUserSignedIn"
-              @click="addtogo(timetableitem.idtimetable_item)"
+              @click="addtogo(timetableitem.id)"
             >fas fa-plus</v-icon>
           </template>
         </v-banner>

@@ -1,27 +1,34 @@
 module.exports = (sequelize, DataTypes) => {
     const TimetableItem = sequelize.define('TimetableItem', {
-        idtimetable_item: {
+        id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            field: 'id'
         },
         company: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            field: 'company'
         },
         destination: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            field: 'destination'
         },
         departure: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            field: 'departure'
         },
         arrival: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            field: 'arrival'
         },
         price: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            field: 'price'
         },
         category: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            field: 'category'
         }
     },
     {

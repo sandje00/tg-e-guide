@@ -22,13 +22,13 @@ module.exports = {
         await User.create(req.body)
             .then(user => {
                 const user_json = user.toJSON();
-                res.status(201).send({
+                return res.status(201).send({
                     user: user_json,
                     token: jwtSignUser(user_json),
                 }); 
             })
             .catch(err => {
-                res.status(409).send({
+                return res.status(409).send({
                     error: ERROR.already_exists
                 });
             });
@@ -54,13 +54,13 @@ module.exports = {
             }
 
             const user_json = user.toJSON();
-            res.status(200).send({
+            return res.status(200).send({
                 user: user_json,
                 token: jwtSignUser(user_json)
             });
         }
         catch(err) {
-            res.status(500).send({
+            return res.status(500).send({
                 error: err.message
             });
         }

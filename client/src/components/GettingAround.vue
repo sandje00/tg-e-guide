@@ -6,7 +6,7 @@
     >
       <v-expansion-panel-header>{{category}}</v-expansion-panel-header>
       <v-expansion-panel-content
-        v-for="item in items" :key="item.idItem">
+        v-for="item in items" :key="item.id">
           <v-card
             v-if="item.category === index"
             class="mx-auto"
@@ -31,13 +31,13 @@
                 @click="navigateTo({
                   name: 'viewitem',
                   params: {
-                    idItem: item.idItem
+                    idItem: item.id
                   }
                 })">
                 fas fa-info-circle</v-icon>
               <v-icon color="#3dbf4c" class="icon add"
               v-if="isUserSignedIn"
-              @click="addtogo(item.idItem)"
+              @click="addtogo(item.id)"
               >fas fa-plus</v-icon>
             </v-card-actions>
           </v-card>
