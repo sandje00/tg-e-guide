@@ -140,7 +140,7 @@ module.exports = {
             
         }
         catch(err) {
-            res.status(500).send({
+            return res.status(500).send({
                 error: err.message
             });
         }

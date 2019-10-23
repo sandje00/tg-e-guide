@@ -10,10 +10,10 @@
               <v-card
                 max-width="500"
                 class="mx-auto"
-                v-for="rating in ratings" :key="rating.idRating"
+                v-for="rating in ratings" :key="rating.id"
               >
                 <v-card-title>
-                  <span>{{rating.UserUsername}}: </span>
+                  <span>{{rating.idUser}}: </span>
                   <v-icon 
                     color="#ffb300" class="star"
                     v-for="(star, i) in rating.grade" :key="i">

@@ -55,8 +55,8 @@ import ratingsService from '../services/ratingsService';
                 await ratingsService.addRating({
                     grade: this.select,
                     comment_text: this.comment,
-                    UserUsername: this.$store.state.user.username,
-                    ItemIdItem: this.$store.state.route.params.idItem
+                    idUser: this.$store.state.user.username,
+                    idItem: this.$store.state.route.params.idItem
                 });
                 this.dialog = false;
                 alert('Rating added successfully.');

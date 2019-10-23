@@ -4,19 +4,18 @@ module.exports = {
     async fetchRatings(req, res) {
         await Rating.findAll({
             where: {
-                ItemIdItem: req.params.idItem
+                idItem: req.params.idItem
             },
             order: [
                 ['createdAt', 'DESC']
             ]
         })
             .then(ratings => {
-                res.send(ratings);
+                return res.status(200).send(ratings);
             })
             .catch(err => {
-                console.log(err);
-                res.status(500).send({
-                    error: 'An error has occured trying to fetch ratings.'
+                return res.status(500).send({
+                    error: err.message
                 })
             });
     },
@@ -24,18 +23,18 @@ module.exports = {
         try {
             const grade = req.body.grade;
             if(!grade) {
-                res.status(400).send({
+                return res.status(400).send({
                     error: 'You should provide a grade for this item.'
                 });
             }
 
             const rating = await Rating.create(req.body);
 
-            res.send(rating);
+            return res.status(201).send(rating);
         }
         catch(err) {
-            res.status(500).send({
-                error: 'An error has occured trying to add rating.'
+            return res.status(500).send({
+                error: err.message
             });
         }
     }
