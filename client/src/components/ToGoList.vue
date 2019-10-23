@@ -4,7 +4,7 @@
 
       <v-banner single-line 
         v-for="item in items"
-        :key="item.ItemIdItem">
+        :key="item.idItem">
 
           <span>{{item.Item.name}}</span>
 
@@ -14,13 +14,13 @@
               @click="navigateTo({
                 name: 'viewitem',
                 params: {
-                  idItem: item.Item.idItem
+                  idItem: item.idItem
                 }
               })">
               fas fa-info-circle</v-icon>
             <v-icon
               color="#f53636"
-              @click="deleteItem(item.id)">
+              @click="deleteItem(item.Item.id)">
               fas fa-trash-alt</v-icon>
           </template>
         </v-banner>
@@ -30,7 +30,7 @@
 
         <v-banner single-line 
           v-for="timetableitem in timetableitems"
-          :key="timetableitem.TimetableItemIdtimetableItem">
+          :key="timetableitem.idItem">
 
             <v-layout align-center justify-space-around row fill-height>
               <span>{{timetableitem.TimetableItem.company}}</span>
@@ -43,7 +43,7 @@
             <template v-slot:actions>
               <v-icon
                 color="#f53636"
-                @click="deleteTimetableItem(timetableitem.id)">
+                @click="deleteTimetableItem(timetableitem.TimetableItem.id)">
                 fas fa-trash-alt</v-icon>
             </template>
         </v-banner>
