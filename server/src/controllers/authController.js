@@ -34,35 +34,35 @@ module.exports = {
             });
     },
     async signin(req, res) {
-        try {
-            const {username, hpwd} = req.body;
-            const user = await User.findOne({
-                where: { username }
-            });
+        const {username, hpwd} = req.body;
 
-            if(!user) {
-                return res.status(401).send({
-                    error: ERROR.user_not_found
+        await User.findOne({
+            where: { username }
+        })
+            .then(async user => {
+                if(!user) {
+                    return res.status(401).send({
+                        error: ERROR.user_not_found
+                    });
+                }
+
+                const is_pwd_valid = await user.pwdcmp(hpwd);
+                if(!is_pwd_valid) {
+                    return res.status(401).send({
+                        error: ERROR.invalid_pwd
+                    });
+                }
+
+                const user_json = user.toJSON();
+                return res.status(200).send({
+                    user: user_json,
+                    token: jwtSignUser(user_json)
                 });
-            }
-
-            const is_pwd_valid = await user.pwdcmp(hpwd);
-            if(!is_pwd_valid) {
-                return res.status(401).send({
-                    error: ERROR.invalid_pwd
+            })
+            .catch(err => {
+                return res.status(500).send({
+                    error: err.message
                 });
-            }
-
-            const user_json = user.toJSON();
-            return res.status(200).send({
-                user: user_json,
-                token: jwtSignUser(user_json)
             });
-        }
-        catch(err) {
-            return res.status(500).send({
-                error: err.message
-            });
-        }
     }
 };
