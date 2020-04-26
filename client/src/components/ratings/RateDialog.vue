@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ratingsService from '../services/ratingsService';
+import ratingsService from '../../services/ratingsService';
 
   export default {
     data() {

@@ -37,8 +37,8 @@
 import {mapState} from 'vuex';
 
 import itemsService from '../services/itemsService';
-import Ratings from './Ratings';
-import RateDialog from './RateDialog';
+import Ratings from './ratings/Ratings';
+import RateDialog from './ratings/RateDialog';
 
 export default {
   components: {

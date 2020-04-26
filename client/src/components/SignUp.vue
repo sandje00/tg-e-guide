@@ -47,20 +47,22 @@ export default {
   },
   methods: {
     async signup() {
-      try {
-        const response = await authService.signup({
+      await authService.signup({
         username: this.username,
         hpwd: this.password
-        });
-        this.$store.dispatch('setToken', response.data.token);
-        this.$store.dispatch('setUser', response.data.user);
-        this.$router.push({
-          name: 'home'
-        });
-      }
-      catch(error) {
-        this.error = error.response.data.error;
-      }
+      })
+        .then(response => {
+          this.$store.dispatch('setToken', response.data.token);
+          this.$store.dispatch('setUser', response.data.user);
+        })
+        .then(() => {
+          this.$router.push({
+            name: 'home'
+          });
+        })
+        .catch(error => {
+          this.error = error.response.data.error;
+        })
     }
   }
 }

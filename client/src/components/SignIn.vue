@@ -47,20 +47,22 @@ export default {
   },
   methods: {
     async signin() {
-      try {
-        const response = await authService.signin({
+      await authService.signin({
         username: this.username,
         hpwd: this.password
+      })
+        .then(response => {
+          this.$store.dispatch('setToken', response.data.token);
+          this.$store.dispatch('setUser', response.data.user);
+        })
+        .then(() => {
+          this.$router.push({
+            name: 'home'
+          });
+        })
+        .catch(error => {
+          this.error = error.response.data.error;
         });
-        this.$store.dispatch('setToken', response.data.token);
-        this.$store.dispatch('setUser', response.data.user);
-        this.$router.push({
-          name: 'home'
-        });
-      }
-      catch(error) {
-        this.error = error.response.data.error;
-      }
     }
   }
 }
