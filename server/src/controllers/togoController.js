@@ -16,14 +16,14 @@ module.exports = {
             const idItem = req.params.idItem;
             const where = { idUser, idItem };
 
-            const Togo = await UserItem.findOne(where);
+            const Togo = await UserItem.findOne({ where });
 
             if(Togo) {
                 return res.status(409).send({
                     error: MESSAGE.already_added
                 });
             }
-
+            
             await UserItem.create(where);
             return res.status(201).send({
                 message: MESSAGE.success
@@ -41,7 +41,7 @@ module.exports = {
             const idItem = req.params.idItem;
             const where = { idUser, idItem };
 
-            const Togo = await UserTimetableItem.findOne(where);
+            const Togo = await UserTimetableItem.findOne({ where });
 
             if(Togo) {
                 return res.status(409).send({
@@ -103,8 +103,8 @@ module.exports = {
             const idUser = req.user.username;
             const idItem = req.params.id;
             const where = { idUser, idItem }
-
-            const useritem = await UserItem.findOne(where);
+            console.log(where)
+            const useritem = await UserItem.findOne({ where });
 
             if(!useritem) {
                 return res.status(404).send({
@@ -127,7 +127,7 @@ module.exports = {
             const idItem = req.params.id;
             const where = { idUser, idItem }
 
-            const usertimetableitem = await UserTimetableItem.findOne(where);
+            const usertimetableitem = await UserTimetableItem.findOne({ where });
 
             if(!usertimetableitem) {
                 return res.status(404).send({
