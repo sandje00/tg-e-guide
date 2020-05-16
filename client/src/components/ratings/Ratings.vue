@@ -1,6 +1,10 @@
 <template>
   <v-container class="grey lighten-5"
         v-if="ratings">
+
+        <RateDialog v-if="isUserSignedIn" v-on:update-ratings="fetchRatings"/>
+        <br>
+
         <v-row no-gutters>
           <v-col>
             
@@ -33,19 +37,36 @@
 </template>
 
 <script>
-import ratingsService from '../../services/ratingsService';
+import { mapState } from 'vuex';
 
-  export default {
-    data() {
-        return {
-            idItem: this.$store.state.route.params.idItem,
-            ratings: null
-        }
-    },
-    async mounted() {
+import ratingsService from '../../services/ratingsService';
+import RateDialog from './RateDialog';
+
+export default {
+  components: {
+    RateDialog
+  },
+  computed: {
+    ...mapState([
+      'isUserSignedIn'
+    ])
+  },
+  data() {
+    return {
+      idItem: this.$store.state.route.params.idItem,
+      ratings: null,
+      //added: null
+    }
+  },
+  async mounted() {
+    this.fetchRatings();
+  },
+  methods: {
+    async fetchRatings() {
       this.ratings = (await ratingsService.fetchRatings(this.idItem)).data;
     }
   }
+}
 </script>
 
 <style scoped>

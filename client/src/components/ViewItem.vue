@@ -21,34 +21,17 @@
 
       <br>
       <br>
-      <v-layout 
-        align-center justify-center row fill-height
-        v-if="isUserSignedIn"
-      >
-        <RateDialog />
-      </v-layout>
-
-      <br>
       <Ratings />
   </div>
 </template>
 
 <script>
-import {mapState} from 'vuex';
-
 import itemsService from '../services/itemsService';
 import Ratings from './ratings/Ratings';
-import RateDialog from './ratings/RateDialog';
 
 export default {
   components: {
-    Ratings,
-    RateDialog
-  },
-  computed: {
-    ...mapState([
-      'isUserSignedIn'
-    ])
+    Ratings
   },
   data() {
     return {
