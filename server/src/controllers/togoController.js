@@ -103,7 +103,7 @@ module.exports = {
             const idUser = req.user.username;
             const idItem = req.params.id;
             const where = { idUser, idItem }
-            console.log(where)
+            
             const useritem = await UserItem.findOne({ where });
 
             if(!useritem) {

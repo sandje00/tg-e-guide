@@ -8,7 +8,6 @@ import Transportation from '@/components/Transportation';
 import ToGoList from '@/components/ToGoList';
 import SignUp from '@/components/SignUp';
 import SignIn from '@/components/SignIn';
-import Test from '@/components/Test';
 
 Vue.use(VueRouter);
 
@@ -49,11 +48,6 @@ export default new VueRouter({
             path: '/signin',
             name: 'signin',
             component: SignIn
-        },
-        {
-            path: '/test',
-            name: 'test',
-            component: Test
         }
     ]
   });

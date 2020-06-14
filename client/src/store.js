@@ -5,7 +5,7 @@ import VuexPersistence from 'vuex-persist';
 Vue.use(Vuex);
 
 const vuexLocal = new VuexPersistence({
-    storage: window.localStorage
+    storage: window.sessionStorage
 });
 
 export default new Vuex.Store({

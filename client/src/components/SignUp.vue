@@ -54,11 +54,7 @@ export default {
         .then(response => {
           this.$store.dispatch('setToken', response.data.token);
           this.$store.dispatch('setUser', response.data.user);
-        })
-        .then(() => {
-          this.$router.push({
-            name: 'home'
-          });
+          location.assign('/');
         })
         .catch(error => {
           this.error = error.response.data.error;
