@@ -52,9 +52,16 @@ export default {
         hpwd: this.password
       })
         .then(response => {
-          this.$store.dispatch('setToken', response.data.token);
-          this.$store.dispatch('setUser', response.data.user);
-          location.assign('/');
+          this.$store.dispatch('setUserData', response.data);
+          this.$store.dispatch('setItems')
+            .then(() => {
+              console.log(this.$store.state.items);
+              this.$store.dispatch('setTimetableItems')
+                .then(() => console.log(this.$store.state.timetableItems))
+                .catch(err => alert(err));
+            })
+            .catch(err => alert(err));
+          this.$router.push({ name: 'home' });
         })
         .catch(error => {
           this.error = error.response.data.error;

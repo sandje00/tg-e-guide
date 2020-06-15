@@ -4,11 +4,11 @@ import store from '../store';
 
 const PORT = process.env.VUE_APP_PORT;
 
-const api = axios.create({
+export default () => {
+    return axios.create({
         baseURL: `http://localhost:${PORT}`,
         headers: { 
             Authorization: `Bearer ${store.state.token}`
         }
     });
-
-export default api;
+}

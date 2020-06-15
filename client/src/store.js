@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist';
 
+import togoService from './services/togoService';
+
 Vue.use(Vuex);
 
 const vuexLocal = new VuexPersistence({
@@ -13,28 +15,58 @@ export default new Vuex.Store({
     state: {
         token: null,
         user: null,
-        isUserSignedIn: false
+        isUserSignedIn: false,
+        items: null,
+        timetableItems: null
     },
     mutations: {
-        setToken(state, token) {
-            state.token = token;
-            if(token) {
+        setUserData(state, data) {
+            state.token = data.token;
+            if(data.token) {
                 state.isUserSignedIn = true;
             }
             else {
                 state.isUserSignedIn = false;
             }
+            state.user = data.user;
         },
-        setUser(state, user) {
-            state.user = user;
+        setItems(state, data) {
+            state.items = data
+        },
+        setTimetableItems(state, data) {
+            state.timetableItems = data
+        },
+        resetItems(state) {
+            state.items = null;
+            state.timetableItems = null;
         }
     },
     actions: {
-        setToken({commit}, token) {
-            commit('setToken', token);
+        setUserData({ commit }, data) {
+            commit('setUserData', data);
         },
-        setUser({commit}, user) {
-            commit('setUser', user);
+        setItems({ commit }) {
+            return new Promise((resolve, reject) => {
+                togoService.showItems()
+                    .then(response => {
+                        commit('setItems', response.data);
+                        resolve();
+                    })
+                    .catch(err => reject(err))
+            });
+        },
+        setTimetableItems({ commit }) {
+            return new Promise((resolve, reject) => {
+                togoService.showTimetableItems()
+                    .then(response => {
+                        commit('setTimetableItems', response.data);
+                        resolve()
+                    })
+                    .catch(err => reject(err))
+            });
+        },
+        resetItems({ commit }) {
+            commit('resetItems');
         }
     },
     plugins: [vuexLocal.plugin]

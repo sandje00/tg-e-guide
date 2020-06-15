@@ -94,11 +94,9 @@ import {showAt, hideAt} from 'vue-breakpoints';
     },
     methods: {
       signout () {
-        this.$store.dispatch('setToken', null);
-        this.$store.dispatch('setUser', null);
-        this.$router.push({
-          name: 'home'
-        });
+        this.$store.dispatch('setUserData', { token: null, user: null });
+        this.$store.dispatch('resetItems');
+        this.$router.push({ name: 'home' });
       }
     }
   }

@@ -52,9 +52,8 @@ export default {
         hpwd: this.password
       })
         .then(response => {
-          this.$store.dispatch('setToken', response.data.token);
-          this.$store.dispatch('setUser', response.data.user);
-          location.assign('/');
+          this.$store.dispatch('setUserData', response.data);
+          this.$router.push({ name: 'home' });
         })
         .catch(error => {
           this.error = error.response.data.error;
