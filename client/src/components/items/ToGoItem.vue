@@ -33,10 +33,11 @@ export default {
         navigateTo(route) {
             this.$router.push(route);
         },
-        async deleteItem(useritem) {
-            await togoService.deleteItem(useritem)
+        async deleteItem(id) {
+            await togoService.deleteItem(id)
                 .then(() => {
                     this.visible = false;
+                    this.$store.dispatch('deleteItem', id);
                 })
                 .catch(error => {
                     alert(error.response.data.error);

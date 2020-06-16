@@ -25,36 +25,52 @@
                     idItem: item.id
                   }
                 })">
-                fas fa-info-circle</v-icon>
-            <v-icon color="#3dbf4c" class="icon add"
-              v-if="isUserSignedIn"
-              @click="addtogo(item.id)"
-              >fas fa-plus</v-icon>
+                    fas fa-info-circle
+            </v-icon>
+            <div v-if="isUserSignedIn">
+                <v-icon color="#f53636"
+                v-if="isItemAdded(item.id)"
+                @click="deleteItem(item.id)">
+                    fas fa-trash-alt
+                </v-icon>
+                <v-icon color="#3dbf4c" class="icon add" v-else
+                @click="addTogo(item.id)">
+                    fas fa-plus
+                </v-icon>
+            </div>
         </v-card-actions>
     </v-card>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import {mapState, mapGetters} from 'vuex';
 
 import togoService from '../../services/togoService';
 
 export default {
     computed: {
-        ...mapState([ 'isUserSignedIn' ])
+        ...mapState([ 'isUserSignedIn' ]),
+        ...mapGetters([ 'isItemAdded' ])
     },
     methods: {
         navigateTo(route) {
             this.$router.push(route);
         },
-        async addtogo(idItem) {
-            try {
-                const response = (await togoService.addItem(idItem)).data;
-                alert(response.message);
-            }
-            catch(error) {
-                alert(error.response.data.error);
-            }
+        async addTogo(id) {
+            await togoService.addItem(id)
+                .then(() => {
+                    this.$store.dispatch('addItem', id);
+                })
+                .catch(err => alert(err.response.data.error));
+        },
+        async deleteItem(id) {
+            await togoService.deleteItem(id)
+                .then(() => {
+                    this.$store.dispatch('deleteItem', id);
+                })
+                .catch(error => {
+                    alert(error.response.data.error);
+                });
         }
     },
     props: {

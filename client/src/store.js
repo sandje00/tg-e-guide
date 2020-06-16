@@ -39,13 +39,35 @@ export default new Vuex.Store({
         resetItems(state) {
             state.items = null;
             state.timetableItems = null;
+        },
+        addItem(state, id) {
+            state.items.push({
+                idItem: id,
+                idUser: state.user.username
+            });
+        },
+        deleteItem(state, id) {
+            state.items = state.items.filter(x => {
+                return x.idItem != id
+            });
+        },
+        addTimetable(state, id) {
+            state.timetableItems.push({
+                idItem: id,
+                idUser: state.user.username
+            });
+        },
+        deleteTimetable(state, id) {
+            state.timetableItems = state.timetableItems.filter(x => {
+                return x.idItem != id
+            });
         }
     },
     actions: {
-        setUserData({ commit }, data) {
+        setUserData({commit}, data) {
             commit('setUserData', data);
         },
-        setItems({ commit }) {
+        setItems({commit}) {
             return new Promise((resolve, reject) => {
                 togoService.showItems()
                     .then(response => {
@@ -55,7 +77,7 @@ export default new Vuex.Store({
                     .catch(err => reject(err))
             });
         },
-        setTimetableItems({ commit }) {
+        setTimetableItems({commit}) {
             return new Promise((resolve, reject) => {
                 togoService.showTimetableItems()
                     .then(response => {
@@ -65,8 +87,40 @@ export default new Vuex.Store({
                     .catch(err => reject(err))
             });
         },
-        resetItems({ commit }) {
+        resetItems({commit}) {
             commit('resetItems');
+        },
+        addItem({commit}, id) {
+            commit('addItem', id);
+        },
+        deleteItem({commit}, id) {
+            commit('deleteItem', id);
+        },
+        addTimetable({commit}, id) {
+            commit('addTimetable', id);
+        },
+        deleteTimetable({commit}, id) {
+            commit('deleteTimetable', id);
+        }
+    },
+    getters: {
+        isItemAdded: state => id => {
+            if(state.items) {
+                let item = state.items.filter(x => { return x.idItem == id });
+                if(item.length == 0)
+                    return false;
+                else
+                    return true;
+            }
+        },
+        isTimetableAdded: state => id => {
+            if(state.timetableItems) {
+                let item = state.timetableItems.filter(x => { return x.idItem == id });
+                if(item.length == 0)
+                    return false;
+                else
+                    return true;
+            }
         }
     },
     plugins: [vuexLocal.plugin]

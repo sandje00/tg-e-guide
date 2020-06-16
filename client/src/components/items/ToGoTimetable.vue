@@ -27,10 +27,11 @@ export default {
         }
     },
     methods: {
-        async deleteTimetableItem(usertimetableitem) {
-            await togoService.deleteTimetableItem(usertimetableitem)
+        async deleteTimetableItem(id) {
+            await togoService.deleteTimetableItem(id)
                 .then(() => {
                     this.visible = false;
+                    this.$store.dispatch('deleteTimetable', id);
                 })
                 .catch(error => {
                     alert(error.response.data.error);

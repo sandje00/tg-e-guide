@@ -8,35 +8,48 @@
             <span>Price: {{timetableitem.price}}</span>
           </v-layout>
             <template v-slot:actions>
-                <v-icon color="#3dbf4c" class="icon add"
-                v-if="isUserSignedIn"
-                @click="addtogo(timetableitem.id)"
-                >fas fa-plus</v-icon>
+              <div v-if="isUserSignedIn">
+                <v-icon color="#f53636"
+                v-if="isTimetableAdded(timetableitem.id)"
+                @click="deleteItem(timetableitem.id)">
+                    fas fa-trash-alt
+                </v-icon>
+                <v-icon color="#3dbf4c" class="icon add" v-else
+                @click="addTogo(timetableitem.id)">
+                    fas fa-plus
+                </v-icon>
+              </div>
             </template>
     </v-banner>
 </template>
 
 <script>
-import {mapState} from 'vuex';
+import {mapState, mapGetters} from 'vuex';
 
 import togoService from '../../services/togoService';
 
 export default {
     computed: {
-      ...mapState([
-        'isUserSignedIn'
-      ])
+      ...mapState([ 'isUserSignedIn' ]),
+      ...mapGetters([ 'isTimetableAdded' ])
     },
     methods: {
-        async addtogo(idItem) {
-            try {
-                const response = (await togoService.addTimetableItem(idItem)).data;
-                alert(response.message);
-            }
-            catch(error) {
-                alert(error.response.data.error);
-            }
-        }
+      async addTogo(id) {
+        await togoService.addTimetableItem(id)
+          .then(() => {
+            this.$store.dispatch('addTimetable', id);
+          })
+          .catch(err => alert(err.response.data.error));
+      },
+      async deleteItem(id) {
+        await togoService.deleteTimetableItem(id)
+          .then(() => {
+            this.$store.dispatch('deleteTimetable', id);
+          })
+          .catch(error => {
+            alert(error.response.data.error);
+          });
+      }
     },
     props: {
         timetableitem: {
