@@ -1,7 +1,10 @@
 <template>
   <div>
+      <br>
+      <br>
       <h1>{{item.name}}</h1>
-
+      <br>
+      <br>
       <v-container class="grey lighten-5">
         <v-row no-gutters>
           <v-col>
@@ -11,7 +14,8 @@
           </v-col>
           <v-col>
             <span class="highlight">Description:</span>
-            <p>{{item.description_text}}</p>
+            <p class="text">{{item.description_text}}</p>
+            <br>
             <span class="highlight">View more link:</span>
             <br>
             <a :href="item.view_more_link">{{item.view_more_link}}</a>
@@ -55,5 +59,10 @@ export default {
 
   a {
     font-size: 1.2em;
+  }
+
+  .text {
+    font-size: 1.2em;
+    text-align: justify;
   }
 </style>

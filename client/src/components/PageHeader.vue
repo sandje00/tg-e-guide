@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-toolbar>
+    <v-toolbar dark prominent
+      src="https://c4.wallpaperflare.com/wallpaper/1020/969/217/blue-day-ocean-gradation-wallpaper-preview.jpg">
       <v-toolbar-title>
         Trogir eGuide
       </v-toolbar-title>
@@ -88,9 +89,7 @@ import {showAt, hideAt} from 'vue-breakpoints';
       showAt
     },
     computed: {
-      ...mapState([
-        'isUserSignedIn'
-      ])
+      ...mapState([ 'isUserSignedIn' ])
     },
     methods: {
       signout () {

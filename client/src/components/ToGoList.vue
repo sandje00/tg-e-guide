@@ -1,18 +1,20 @@
 <template>
   <div>
-      <h1>TO GO list</h1>
-        <Item 
-          v-for="item in items"
-          :key="item.idItem"
-          v-bind:item="item"
-        />
-        <br>
-        <br>
-        <TimetableItem 
-          v-for="timetableitem in timetableitems"
-          :key="timetableitem.idItem"
-          v-bind:timetableitem="timetableitem"
-        />
+    <br>
+    <br>
+    <h1>TO GO list</h1>
+      <Item 
+        v-for="item in items"
+        :key="item.idItem"
+        v-bind:item="item"
+      />
+      <br>
+      <br>
+      <TimetableItem 
+        v-for="timetableitem in timetableitems"
+        :key="timetableitem.idItem"
+        v-bind:timetableitem="timetableitem"
+      />
   </div>
 </template>
 
